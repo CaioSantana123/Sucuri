@@ -23,7 +23,7 @@ def filterMails(args):
 	if len(sp) == 2:
 		aux = sp[1][:-1]
 
-		if(aux == "gmail.com"):				
+		if(aux == "gmail.com" or aux == "hotmail.com"):				
 			ret = sp1[0][:-1]
 		else:
 			ret = ""
