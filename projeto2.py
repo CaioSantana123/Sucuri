@@ -1,6 +1,8 @@
-import sys, os, time, math
+import sys, os, time, math, re
 from pyDF import *
 sys.path.append(os.environ['PYDFHOME'])
+
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 	
 def readFile(args):
 	filename = args[0]
@@ -15,7 +17,7 @@ def readFile(args):
 
 	return nprocs, vector
 
-def filterMails(args):
+def filterMails1(args):
 	sp1 = args			
 		
 	sp = sp1[0].split("@")
@@ -23,7 +25,7 @@ def filterMails(args):
 	if len(sp) == 2:
 		aux = sp[1][:-1]
 
-		if(aux == "gmail.com" or aux == "hotmail.com"):				
+		if(aux == "gmail.com"):				
 			ret = sp1[0][:-1]
 		else:
 			ret = ""
@@ -32,6 +34,15 @@ def filterMails(args):
 
 	
 	return ret
+
+def filterMails(args):   
+	sp = args[0]			
+		
+	aux = sp[1][:-1]
+	if re.search(regex,aux):   
+        	return sp[0][:-1]  
+	else:   
+        	return ""
 
 def printMails(args):
 	if args[0] != "":
