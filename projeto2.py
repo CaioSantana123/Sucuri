@@ -17,7 +17,7 @@ def readFile(args):
 
 	return nprocs, vector
 
-def filterMails(args):
+def filterMails1(args):
 	sp1 = args			
 		
 	sp = sp1[0].split("@")
